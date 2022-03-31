@@ -1,0 +1,28 @@
+{
+  "name": "cryptotesters-merkle-whitelist-nft",
+  "version": "1.0.0",
+  "description": "NFT Cryptotesters community",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "husky": {
+    "hooks": {
+       "pre-push": "npm run prettier:solidity"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "solhint": "./node_modules/.bin/solhint -f table src/**/*.sol",
+    "prettier:solidity": "./node_modules/.bin/prettier --write src/**/*.sol"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "prettier": "^2.6.1",
+    "prettier-plugin-solidity": "*",
+    "solhint": "^3.3.7",
+    "solhint-plugin-prettier": "^0.0.5"
+  }
+}
