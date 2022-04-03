@@ -11,7 +11,7 @@ contract Receiver is IERC721Receiver {
         address from,
         uint256 id,
         bytes calldata data
-    ) external returns (bytes4) {
+    ) external pure returns (bytes4) {
         return this.onERC721Received.selector;
     }
 }
@@ -39,7 +39,7 @@ contract ERC721CryptoTestersTest is DSTest {
         // Given:
         Receiver receiver = new Receiver();
         assertEq(nft.balanceOf(address(receiver)), 0);
-        
+
         // When:
         nft.transferOwnership(address(receiver));
         vm.prank(address(receiver), address(receiver));
@@ -65,8 +65,6 @@ contract ERC721CryptoTestersTest is DSTest {
         for (uint256 id = 1; id < 151; id++) {
             assertEq(nft.ownerOf(id), testerOne);
         }
-          assertEq(nft.balanceOf(testerOne), 150);
+        assertEq(nft.balanceOf(testerOne), 150);
     }
 }
-
-

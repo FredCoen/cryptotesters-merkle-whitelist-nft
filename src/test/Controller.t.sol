@@ -45,6 +45,7 @@ contract ControllerTest is DSTest {
         assertEq(baseURIPre, '');
         nft.setBaseURI('uri');
         string memory baseURIPost = nft.baseURI();
+        assertEq(baseURIPost, 'uri');
     }
 
     function testWithdrawPayments() public {
