@@ -1,8 +1,7 @@
 pragma solidity ^0.8.0;
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
-import "openzeppelin-contracts/contracts/security/PullPayment.sol";
 
-contract Controller is Ownable, PullPayment {
+contract Controller is Ownable {
     bool public publicMint;
     bool public whitelistMint;
     string public baseURI;
@@ -19,8 +18,10 @@ contract Controller is Ownable, PullPayment {
         publicMint = true;
     }
 
-    /// @dev Overridden in order to make it an onlyOwner function
-    function withdrawPayments(address payable payee) public override onlyOwner {
-        super.withdrawPayments(payee);
+    function withdrawPayments(address payable payee) external onlyOwner {
+        uint256 balance = address(this).balance;
+        (bool transferTx, ) = payee.call{value: balance}("");
+        require(transferTx);
     }
+
 }
