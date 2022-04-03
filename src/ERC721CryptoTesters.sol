@@ -26,6 +26,7 @@ contract ERC721CryptoTesters is ERC721, Controller {
         whitelistMint = _whitelistMint;
     }
 
+    /// @dev Approx. 4 million gas well below block limit
     function preMintForTreasury() public onlyOwner {
         for (uint id = 0; id < 150; id++) {
             uint256 newTokenId = ++currentTokenId;
@@ -33,7 +34,7 @@ contract ERC721CryptoTesters is ERC721, Controller {
         }
     }
 
-    function whiltistClaim(bytes32[] calldata proof) public returns (uint256) {
+    function whitelistClaim(bytes32[] calldata proof) public returns (uint256) {
         require(whitelistMint, "Whitelist mint not available yet");
         require(!publicMint, "Whitelised redemptions have expired");
         require(

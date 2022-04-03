@@ -17,12 +17,11 @@ contract ControllerTest is DSTest {
     ERC721CryptoTesters nft;
 
     function setUp() public {
-
         // traces readability enhancement
         vm.label(testerOne, 'Tester One');
         vm.label(testerTwo, 'Tester Two');
         vm.label(address(this), 'CryptoTestersNftTest Contract');
-        nft = new ERC721CryptoTesters("Cryptotesters", "Testers", bytes32(0), false, false);
+        nft = new ERC721CryptoTesters('Cryptotesters', 'Testers', bytes32(0), false, false);
     }
 
     function testPublicMintSetter() public {
@@ -43,8 +42,8 @@ contract ControllerTest is DSTest {
 
     function testBaseURISetter() public {
         string memory baseURIPre = nft.baseURI();
-        assertEq(baseURIPre,"");
-        nft.setBaseURI("uri");
+        assertEq(baseURIPre, '');
+        nft.setBaseURI('uri');
         string memory baseURIPost = nft.baseURI();
     }
 
@@ -53,15 +52,15 @@ contract ControllerTest is DSTest {
         assertEq(address(nft).balance, 1 ether);
         assertEq(testerOne.balance, 0);
         nft.withdrawPayments(payable(testerOne));
-        assertEq(address(nft).balance,0);
+        assertEq(address(nft).balance, 0);
         assertEq(testerOne.balance, 1 ether);
     }
-    
+
     function testFailWithdrawNotOwner() public {
         vm.deal(address(nft), 1 ether);
         assertEq(address(nft).balance, 1 ether);
         assertEq(testerOne.balance, 0);
-        vm.prank(testerOne,testerOne);
+        vm.prank(testerOne, testerOne);
         nft.withdrawPayments(payable(testerOne));
     }
 }
