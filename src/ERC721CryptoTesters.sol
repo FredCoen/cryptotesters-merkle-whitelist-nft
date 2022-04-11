@@ -6,13 +6,21 @@ import "openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.sol";
 import "./Controller.sol";
 
 contract ERC721CryptoTesters is ERC721, Controller {
+
+    /*//////////////////////////////////////////////////////////////
+                                STORAGE
+    //////////////////////////////////////////////////////////////*/
+
     bytes32 public immutable merkleRoot;
     uint256 public constant totalSupply = 10_000;
     uint256 public constant mintPrice = 0.3 ether;
     uint256 public currentTokenId;
 
-    // Tracking of whitelisted occured claims
     mapping(address => bool) whitelistClaimed;
+
+     /*//////////////////////////////////////////////////////////////
+                               CONSTRUCTOR
+    //////////////////////////////////////////////////////////////*/
 
     constructor(
         string memory _name,
@@ -26,6 +34,10 @@ contract ERC721CryptoTesters is ERC721, Controller {
         whitelistMint = _whitelistMint;
     }
 
+    /*//////////////////////////////////////////////////////////////
+                              PUBLIC MINTING LOGIC
+    //////////////////////////////////////////////////////////////*/
+
     /// @dev Approx. 4 million gas well below block limit
     function preMintForTreasury() public onlyOwner {
         for (uint id = 0; id < 150; id++) {
@@ -36,10 +48,10 @@ contract ERC721CryptoTesters is ERC721, Controller {
 
     function whitelistClaim(bytes32[] calldata proof) public returns (uint256) {
         require(whitelistMint, "Whitelist mint not available yet");
-        require(!publicMint, "Whitelised redemptions have expired");
+        require(!publicMint, "Whitelised claims have expired");
         require(
             !whitelistClaimed[msg.sender],
-            "This whitlisted address already claimed"
+            "Address already claimed"
         );
         uint256 newTokenId = ++currentTokenId;
         bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
@@ -63,6 +75,10 @@ contract ERC721CryptoTesters is ERC721, Controller {
         _safeMint(recipient, newTokenId);
         return newTokenId;
     }
+
+     /*//////////////////////////////////////////////////////////////
+                         METADATA STORAGE/LOGIC
+    //////////////////////////////////////////////////////////////*/
 
     function _baseURI() internal view virtual override returns (string memory) {
         return baseURI;

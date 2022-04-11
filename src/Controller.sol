@@ -2,9 +2,18 @@ pragma solidity ^0.8.0;
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
 
 contract Controller is Ownable {
+
+    /*//////////////////////////////////////////////////////////////
+                                STORAGE
+    //////////////////////////////////////////////////////////////*/
+
     bool public publicMint;
     bool public whitelistMint;
     string public baseURI;
+
+    /*//////////////////////////////////////////////////////////////
+                                GOVERNANCE LOGIC
+    //////////////////////////////////////////////////////////////*/
 
     function setBaseURI(string memory _baseURI) public onlyOwner {
         baseURI = _baseURI;
