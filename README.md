@@ -1,6 +1,6 @@
 ## Merkle Tree Whitelisted Cryptotesters NFT
 
-Simple NFT contract with treasury, whitelist and public mint.
+Simple NFT contract with treasury, whitelist and public mint for the CryptoTesters community.
 
 ### Requirements
 
