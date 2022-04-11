@@ -12,7 +12,7 @@ contract ERC721CryptoTesters is ERC721, Controller {
     //////////////////////////////////////////////////////////////*/
 
     bytes32 public immutable merkleRoot;
-    uint256 public constant totalSupply = 10_000;
+    uint256 public constant totalSupply = 2000;
     uint256 public constant mintPrice = 0.3 ether;
     uint256 public currentTokenId;
 
