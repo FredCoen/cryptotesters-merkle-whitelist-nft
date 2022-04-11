@@ -8,7 +8,7 @@
   },
   "husky": {
     "hooks": {
-       "pre-push": "npm run prettier:solidity"
+      "pre-push": "npm run prettier:solidity"
     }
   },
   "scripts": {
@@ -24,5 +24,9 @@
     "prettier-plugin-solidity": "*",
     "solhint": "^3.3.7",
     "solhint-plugin-prettier": "^0.0.5"
+  },
+  "dependencies": {
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.2.31"
   }
 }
