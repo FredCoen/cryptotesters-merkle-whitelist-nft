@@ -1,4 +1,6 @@
-## Description
+## Merkle Tree Whitelisted Cryptotesters NFT
+
+Simple NFT contract with treasury, whitelist and public mint.
 
 ### Build
 
@@ -52,3 +54,7 @@ Check contract has been verified:
 ```bash
 forge verify-check --chain-id 421611 <GUID> <arbiscan-apy-key>
 ```
+
+## License
+
+All code has been licensed under CC0, just like CryptoTesters themselves.
