@@ -2,6 +2,10 @@
 
 Simple NFT contract with treasury, whitelist and public mint.
 
+### Requirements
+
+Install Foundry framework by following the instructions oulined [here](https://book.getfoundry.sh/getting-started/installation.html).
+
 ### Build
 
 ```bash
