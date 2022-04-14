@@ -4,7 +4,7 @@ Simple NFT contract with treasury, whitelist and public mint for the CryptoTeste
 
 ### Requirements
 
-Install Foundry framework by following the instructions oulined [here](https://book.getfoundry.sh/getting-started/installation.html).
+Install Foundry framework by following the instructions oullined [here](https://book.getfoundry.sh/getting-started/installation.html).
 
 ### Build
 
