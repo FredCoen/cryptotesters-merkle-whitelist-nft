@@ -61,8 +61,8 @@ contract ERC721CryptoTesters is ERC721, Controller {
             "Address not whitelisted"
         );
         require(newTokenId <= totalSupply, "Max supply reached");
-        _safeMint(msg.sender, newTokenId);
         whitelistClaimed[msg.sender] = true;
+        _safeMint(msg.sender, newTokenId);
         return newTokenId;
     }
 
