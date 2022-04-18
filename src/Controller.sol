@@ -10,6 +10,8 @@ contract Controller is Ownable {
     bool public publicMint;
     bool public whitelistMint;
     string public baseURI;
+    bytes32 public merkleRoot;
+
 
     /*//////////////////////////////////////////////////////////////
                                 GOVERNANCE LOGIC
@@ -17,6 +19,10 @@ contract Controller is Ownable {
 
     function setBaseURI(string memory _baseURI) public onlyOwner {
         baseURI = _baseURI;
+    }
+
+    function setMerkleRoot(bytes32 _merkleRoot) public onlyOwner {
+        merkleRoot = _merkleRoot;
     }
 
     function startWhitelistMint() public onlyOwner {
