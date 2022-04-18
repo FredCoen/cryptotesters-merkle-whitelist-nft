@@ -66,7 +66,6 @@ contract ERC721CryptoTesters is ERC721, Controller {
     }
 
     function publicMintTo(address recipient) public payable returns (uint256) {
-        require(msg.sender == tx.origin);
         require(publicMint, "Public mint not available yet");
         require(
             msg.value == mintPrice,
