@@ -15,7 +15,7 @@ contract ERC721CryptoTesters is ERC721, Controller {
     uint256 public constant mintPrice = 0.3 ether;
     uint256 public currentTokenId;
 
-    mapping(address => bool) whitelistClaimed;
+    mapping(address => bool) public whitelistClaimed;
 
      /*//////////////////////////////////////////////////////////////
                                CONSTRUCTOR
@@ -39,7 +39,7 @@ contract ERC721CryptoTesters is ERC721, Controller {
 
     /// @dev Approx. 4 million gas well below block limit
     function preMintForTreasury() public onlyOwner {
-        require(currentTokenId < totalSupply, "Max supply reached");
+        require(currentTokenId + 150 <= totalSupply, "Max supply reached");
         for (uint id = 0; id < 150; id++) {
             uint256 newTokenId = ++currentTokenId;
             _safeMint(msg.sender, newTokenId);
